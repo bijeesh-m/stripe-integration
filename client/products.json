@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Bluetooth Headphones",
+        "description": "Noise cancelling over-ear headphones with 40 hours battery life.",
+        "quantity": 1,
+        "price": 79.99,
+        "category": "Electronics",
+        "inStock": true,
+        "imageUrl": "https://www.sennheiser-hearing.com/_next/image/?url=https%3A%2F%2Feu-central-1-akqa.graphassets.com%2FAGz66yvUcQ42Ggm7CrXdgz%2Fe7ss84PoSCShHrhScQm5&w=1920&q=75"
+    },
+    {
+        "id": 2,
+        "name": "Smart Fitness Watch",
+        "description": "Track your fitness, heart rate, and notifications on the go.",
+        "quantity": 1,
+        "price": 59.99,
+        "category": "Wearables",
+        "inStock": true,
+        "imageUrl": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXLJ3ref_VW_34FR+watch-case-42-aluminum-jetblack-nc-s10_VW_34FR+watch-face-42-aluminum-jetblack-s10_VW_34FR?wid=5120&hei=3280&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=SmNOTU80TDhXckVBUGdaWWZTZVBXcDNqbENGcEFFTlJVaXJwL2VzdGxEMU9NU1VZS1dIdzdkNjZzejNRdFdUZzBnRnJNVU50TjZtbUN3ZjYvVksrL1FtTHNhRmRKQkE2OXJHRVEvRTFWdXVoSHlqYUY2YWdsek45M29HTWxyVHhWNEM0ZHZzMzMzajJiOGZuamRiTE9rUVN3R3VxZWhYYXgwOHljYmZFMXBocmMyRTN3NCt6QkoxaUdRb0FBay9VYktGTHdENW9lYUFnak5pcy9ReEdDVGFYRW5lZTlQWUFSemFVTERGOFVXQ0pMTGI4QWxGbG1DY25rS1FILzcyQg"
+    },
+    {
+        "id": 3,
+        "name": "Ergonomic Office Chair",
+        "description": "Adjustable height, lumbar support, and breathable mesh back.",
+        "quantity": 1,
+        "price": 199.99,
+        "category": "Furniture",
+        "inStock": false,
+        "imageUrl": "https://ergosphere.in/wp-content/uploads/2021/07/Q5B-Bk.png"
+    },
+    {
+        "id": 4,
+        "name": "Stainless Steel Water Bottle",
+        "description": "Keeps drinks cold for 24 hours and hot for 12 hours.",
+        "quantity": 1,
+        "price": 24.99,
+        "category": "Home & Kitchen",
+        "inStock": true,
+        "imageUrl": "https://m.media-amazon.com/images/I/41UaKcWbhSL.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Gaming Mouse",
+        "description": "High precision optical sensor with customizable RGB lighting.",
+        "quantity": 1,
+        "price": 49.99,
+        "category": "Gaming",
+        "inStock": true,
+        "imageUrl": "https://m.media-amazon.com/images/I/313vjNMPw3L._SX300_SY300_QL70_FMwebp_.jpg"
+    }
+]
