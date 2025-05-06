@@ -5,7 +5,6 @@ import axios from "../config/axios.config";
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async (thunkAPI) => {
     try {
         const response = await axios.get("/products");
-        console.log(response.data.products);
         return response.data.products;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.response?.data || "Something went wrong");

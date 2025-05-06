@@ -13,7 +13,6 @@ const Products = () => {
 
     const { products, loading, error } = useSelector((state) => state.products);
 
-    console.log(products);
 
     if (loading) {
         return <div>Loading....</div>;

@@ -1,42 +1,61 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "../config/axios.config";
 
-
-
+export const getCart = createAsyncThunk("cart/getCart", async (userId) => {
+    const res = await axios.get(`/cart`);
+    return res.data.userCart;
+});
 
 const cartSlice = createSlice({
     name: "cart",
-    initialState: [],
+    initialState: {
+        userId: null,
+        items: [],
+        totalAmount: 0,
+        status: "active",
+        loading: false,
+        error: null,
+    },
     reducers: {
         addToCart: (state, action) => {
-            let isExist = false;
-            state.map((item) => {
-                if (item.id === action.payload.id) {
-                    isExist = true;
-                    return (item.quantity += 1);
-                }
-            });
-            if (!isExist) {
-                state.push(action.payload);
+            const item = state.items.find((i) => i.productId._id === action.payload.productId);
+            if (item) {
+                item.quantity += 1;
+            } else {
+                state.items.push({ ...action.payload, quantity: 1 });
             }
         },
-        removeFromCart: (state, action) => (state = state.filter((item) => item.id !== action.payload)),
+        removeFromCart: (state, action) => {
+            console.log(action);
+            state.items = state.items.filter((i) => i.productId._id !== action.payload);
+        },
         incQty: (state, action) => {
-            state.map((item) => {
-                if (item.id === action.payload) {
-                    return (item.quantity += 1);
-                }
-            });
+            const item = state.items.find((i) => i.productId._id === action.payload);
+            if (item) item.quantity += 1;
         },
         decQty: (state, action) => {
-            state.map((item) => {
-                if (item.id === action.payload) {
-                    if (item.quantity > 1) {
-                        return (item.quantity -= 1);
-                    }
-                    
-                }
-            });
+            const item = state.items.find((i) => i.productId._id === action.payload);
+            if (item && item.quantity > 1) item.quantity -= 1;
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getCart.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(getCart.fulfilled, (state, action) => {
+                const { userId, items, totalAmount, status } = action.payload;
+                state.userId = userId;
+                state.items = items;
+                state.totalAmount = totalAmount;
+                state.status = status;
+                state.loading = false;
+            })
+            .addCase(getCart.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            });
     },
 });
 

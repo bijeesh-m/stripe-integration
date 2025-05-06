@@ -10,9 +10,11 @@ const ProductCard = ({ product }) => {
     const handleAddToCart = async (prodId) => {
         dispatch(addToCart(product));
 
-        const res = await axios.post("/cart", { productId: product._id });
-
-        console.log(res);
+        try {
+            await axios.post("/cart", { productId: product._id });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
