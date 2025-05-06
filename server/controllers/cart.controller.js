@@ -11,6 +11,8 @@ module.exports.getUserCart = async (req, res) => {
     }
 };
 module.exports.addToCart = async (req, res) => {
+
+    console.log("from add to cart...");
     try {
         const userCart = await Cart.findOne({ userId: "6815e26745f905fe81ea5bb0" });
 
@@ -36,6 +38,8 @@ module.exports.addToCart = async (req, res) => {
                     }
                     return ele;
                 });
+
+                console.log("user cart from update quantity :",userCart);
             } else {
                 const productData = { productId: product._id, productName: product.title, price: product.price };
                 userCart.items.push(productData);

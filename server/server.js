@@ -3,6 +3,7 @@ const authRoute = require("./routes/auth.route");
 const bookRoute = require("./routes/book.route");
 const productRoute = require("./routes/product.route");
 const cartRoute = require("./routes/cart.route");
+const orderRoute = require("./routes/order.route");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
@@ -22,6 +23,7 @@ app.use("/auth", authRoute); // authentication routes( login and register)
 app.use("/books", bookRoute);
 app.use("/products", productRoute);
 app.use("/cart", cartRoute);
+app.use("/order", orderRoute);
 
 app.listen(4000, () => {
     console.log("server is running on port 4000!");
