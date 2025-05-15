@@ -17,10 +17,12 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
     try {
-        const isExist = await Users.findOne({ email: req.body.email });
+        const { password, email } = req.body;
+        const isExist = await Users.findOne({ email });
         if (isExist) {
-            if (req.body.password === isExist.password) {
-                const token = jwt.sign({ name: isExist.name, role: isExist._id }, process.env.JWT_SECRET, {
+            const auth = await bcrypt.compare(password, isExist.password);
+            if (auth) {
+                const token = jwt.sign({ name: isExist.name, id: isExist._id }, process.env.JWT_SECRET, {
                     expiresIn: "1hr",
                 });
                 res.cookie("authToken", token, { expiresIn: "1hr" });
@@ -33,5 +35,14 @@ module.exports.login = async (req, res) => {
         }
     } catch (error) {
         console.log(error.message);
+    }
+};
+
+module.exports.me = async (req, res) => {
+    try {
+        const user = await Users.findById(req.user.id);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: "error", error: error.message });
     }
 };

@@ -3,12 +3,14 @@ import React, { useEffect } from "react";
 import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../features/productSlice";
+import { checkAuthStatus } from "../features/authSlice";
 
 const Products = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchProducts());
+        // dispatch(checkAuthStatus());
     }, []);
 
     const { products, loading, error } = useSelector((state) => state.products);

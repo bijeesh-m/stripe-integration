@@ -14,6 +14,8 @@ require("dotenv").config();
 
 app.use(express.json()); // for parsing req.body(data from client)
 
+app.use(express.static('/uploads'))
+
 connectDB();
 
 app.use(cookieParser()); // for parsing cookies on server
